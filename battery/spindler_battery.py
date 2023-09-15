@@ -1,9 +1,13 @@
 from battery.battery import Battery
+from utils import add_years_to_date
 
-class SpindlerBattery():
-    def __init__(self, last_service_date, curent_date) -> Battery:
-        super().__init__()
+class SpindlerBattery(Battery):
+    def __init__(self, last_service_date, curent_date):
         self.last_service_date = last_service_date
         self.current_date = curent_date
     def needs_service(self):
-        return self.current_date - self.last_service_date > 10000
+        battery_service_by_date = add_years_to_date(self.last_service_date, 2)
+        if battery_service_by_date < self.current_date or self.engine_should_be_serviced():
+            return True
+        else:
+            return False
