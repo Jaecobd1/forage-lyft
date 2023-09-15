@@ -6,7 +6,11 @@ from battery.spindler_battery import SpindlerBattery
 
 
 class Calliope():
-    def __init__(self, current_mileage, last_service_mileage, last_service_date, current_date) -> Car:
+    def __init__(self,
+                 current_date,
+                last_service_date,
+                current_mileage,
+                last_service_mileage) -> Car:
         super().__init__(CapuletEngine(current_mileage, last_service_mileage), SpindlerBattery(last_service_date, current_date))
 
     def needs_service(self):
