@@ -4,6 +4,7 @@ from engine.sternman_engine import SternmanEngine
 from battery.spindler_battery import SpindlerBattery
 from battery.nubbin_battery import NubbinBattery
 from car import Car;
+from tire.carrigan_tire import CarriganTire
 
 class CarFactory():
     @staticmethod
@@ -14,6 +15,7 @@ class CarFactory():
             last_service_mileage):
         engine = CapuletEngine(current_mileage, last_service_mileage)
         battery = SpindlerBattery(last_service_date, current_date)
+        tires = CarriganTire(0.5, 0.5, 0.5, 0.5);
         car = Car(engine, battery)
         return car
 
